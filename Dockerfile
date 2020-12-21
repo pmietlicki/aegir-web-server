@@ -105,3 +105,5 @@ ENV AEGIR_DATABASE_SERVER database
 
 
 VOLUME /var/aegir
+EXPOSE 80
+CMD ["httpd-foreground"]
