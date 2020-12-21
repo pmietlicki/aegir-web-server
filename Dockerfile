@@ -94,7 +94,6 @@ ENV AEGIR_HTTP_SERVICE_TYPE apache
 ENV APACHE_PHP_RUN_USER aegir
 ENV APACHE_PHP_RUN_GROUP aegir
 COPY www.conf /etc/php/7.3/fpm/pool.d/www.conf
-RUN chmod 644 /etc/php/7.3/fpm/pool.d/www.conf
 
 # Must be fixed across versions so we can upgrade containers.
 ENV AEGIR_HOSTMASTER_ROOT /var/aegir/hostmaster
