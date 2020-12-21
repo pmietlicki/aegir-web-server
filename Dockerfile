@@ -106,4 +106,4 @@ ENV AEGIR_DATABASE_SERVER database
 VOLUME /var/aegir
 USER root
 EXPOSE 80
-RUN systemctl start apache2
+RUN /usr/sbin/apache2ctl start
