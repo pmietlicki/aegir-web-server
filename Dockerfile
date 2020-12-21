@@ -103,7 +103,7 @@ WORKDIR /var/aegir
 # The Hostname of the database server to use
 ENV AEGIR_DATABASE_SERVER database
 
-
 VOLUME /var/aegir
+USER root
 EXPOSE 80
 CMD ["httpd-foreground"]
