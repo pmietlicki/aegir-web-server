@@ -86,7 +86,6 @@ RUN chown aegir:aegir /var/aegir/config -R
 RUN mkdir /var/aegir/.drush
 
 #PREPARE SSH
-RUN /etc/init.d/ssh start
 RUN mkdir /var/aegir/.ssh
 RUN chmod 700 /var/aegir/.ssh
 RUN touch /var/aegir/.ssh/authorized_keys
@@ -114,5 +113,6 @@ USER root
 EXPOSE 80
 COPY httpd-foreground /usr/local/bin/httpd-foreground
 RUN chmod +x /usr/local/bin/httpd-foreground
+CMD["/etc/init.d/php7.3-fpm","start"]
 # Launch Apache
 CMD ["httpd-foreground"]
