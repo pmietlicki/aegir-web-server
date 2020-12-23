@@ -107,8 +107,6 @@ ENV AEGIR_DATABASE_SERVER database
 
 VOLUME /var/aegir
 
-USER root
-
 # Expose Apache
 EXPOSE 80
 COPY httpd-foreground /usr/local/bin/httpd-foreground
@@ -116,3 +114,5 @@ RUN chmod +x /usr/local/bin/httpd-foreground
 CMD["/etc/init.d/php7.3-fpm","start"]
 # Launch Apache
 CMD ["httpd-foreground"]
+
+USER root
