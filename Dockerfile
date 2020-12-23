@@ -81,21 +81,21 @@ RUN echo 'Hello, Aegir.' > /var/log/aegir/system.log
 ENV REGISTRY_REBUILD_VERSION 7.x-2.5
 RUN drush dl --destination=/usr/share/drush/commands registry_rebuild-$REGISTRY_REBUILD_VERSION -y
 
-USER aegir
-
-RUN mkdir /var/aegir/config
-RUN chown aegir:aegir /var/aegir/config -R
-RUN mkdir /var/aegir/.drush
-
 #PREPARE SSH
 RUN mkdir /var/aegir/.ssh
 RUN chmod 700 /var/aegir/.ssh
 RUN touch /var/aegir/.ssh/authorized_keys
 RUN chmod 600 /var/aegir/.ssh/authorized_keys
-
 ENV ID_RSA_PUB ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDrQdWf01Rr6pP0DRtMa5QeZd2s6SK1fKSlZES9IaXN/w+uBhSCCMsElyPWDJ7rXbQVJavXE+yYiIBUpKcrex7u7b7+7V/PJOApfXZgijp3wZs6uSEdmpgq+ik50ah3Dg6RgrnFjS041rPzg/tnmkVbszCjAL6JRI55uEjnjnJXbLjGulndof8ZzCg0haCgeHuEgQDxQJ9b+Er3BX0zB2MNSyZnUEfQr4QxSQmOecD0rAYihAsp1TGHu2sAnxLE+m1L6pjOS/ZN0ca+0BH9hOQTNdAelhzVue7GYWdFm9Cqa5iq5xZx7dYPtkvuHyukKIYd31dyvN9JjBRbloZTpWKhuUWge7RvVLGGdJ8gWJB0T2QdsBuR+bpDyTse0h31F+5o5pXZ8OeHEOsMQBsl1Qy02RMk/yfgKMic11udUDB53bgj9joFQwbuFLzrirSsR6ErCg/qsO/D532UE3a5EV4gHqp8gmeAmlGmOVgmuI6iM880PM/iyW347i0SiY3OMOc= aegir@devaegirhostmaster
 
 RUN echo ${ID_RSA_PUB} >> /var/aegir/.ssh/authorized_keys
+
+
+USER aegir
+
+RUN mkdir /var/aegir/config
+RUN chown aegir:aegir /var/aegir/config -R
+RUN mkdir /var/aegir/.drush
 
 COPY www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
@@ -116,3 +116,4 @@ RUN sudo chmod +x /usr/local/bin/httpd-foreground
 # Launch Apache
 CMD ["httpd-foreground"]
 
+User root
