@@ -104,6 +104,11 @@ WORKDIR /var/aegir
 ENV AEGIR_DATABASE_SERVER database
 
 VOLUME /var/aegir
+
 USER root
+
+# Expose Apache
 EXPOSE 80
-RUN /usr/sbin/apache2ctl start
+ 
+# Launch Apache
+CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
