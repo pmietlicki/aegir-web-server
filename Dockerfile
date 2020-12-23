@@ -76,7 +76,6 @@ RUN bash standalone-install-fix-permissions-ownership.sh
 RUN mkdir /var/log/aegir
 RUN chown aegir:aegir /var/log/aegir
 RUN chown -R aegir:aegir /var/log/
-RUN chown -R aegir:aegir /run/php/
 RUN echo 'Hello, Aegir.' > /var/log/aegir/system.log
 
 ENV REGISTRY_REBUILD_VERSION 7.x-2.5
