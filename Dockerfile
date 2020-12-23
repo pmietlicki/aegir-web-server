@@ -35,7 +35,8 @@ RUN apt-get update -qq && apt-get install -y -qq\
   wget \
   curl \
   mysql-client \
-  openssh-server
+  openssh-server \
+  cron
 
 ARG AEGIR_UID=1000
 ENV AEGIR_UID ${AEGIR_UID:-1000}
