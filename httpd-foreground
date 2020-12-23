@@ -5,4 +5,4 @@ set -e
 rm -f /usr/local/apache2/logs/httpd.pid
 
 sudo /usr/sbin/apache2ctl start
-tail -f /var/log/apache2/system.log
+tail -f /var/log/apache2/access.log
