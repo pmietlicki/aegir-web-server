@@ -33,7 +33,8 @@ RUN apt-get update -qq && apt-get install -y -qq\
   unzip \
   wget \
   curl \
-  mysql-client
+  mysql-client \
+  openssh-server
 
 ENV AEGIR_UID 1000
 
