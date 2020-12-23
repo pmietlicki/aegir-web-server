@@ -92,6 +92,9 @@ ENV ID_RSA_PUB ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDrQdWf01Rr6pP0DRtMa5QeZd2s6
 
 RUN echo ${ID_RSA_PUB} >> /var/aegir/.ssh/authorized_keys
 
+#Prepare PHP FPM config for apache
+COPY php-fpm.conf /etc/apache2/conf-available/
+RUN a2enconf php-fpm
 
 USER aegir
 
