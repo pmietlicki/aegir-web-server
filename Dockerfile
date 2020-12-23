@@ -112,8 +112,7 @@ VOLUME /var/aegir
 # Expose Apache
 EXPOSE 80
 COPY httpd-foreground /usr/local/bin/httpd-foreground
-RUN chmod +x /usr/local/bin/httpd-foreground
+RUN sudo chmod +x /usr/local/bin/httpd-foreground
 # Launch Apache
 CMD ["httpd-foreground"]
 
-USER root
