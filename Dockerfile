@@ -90,6 +90,7 @@ RUN a2enconf php-fpm
 USER aegir
 
 #PREPARE SSH
+RUN chmod 755 /var/aegir
 RUN mkdir /var/aegir/.ssh
 RUN chmod 700 /var/aegir/.ssh
 RUN touch /var/aegir/.ssh/authorized_keys
