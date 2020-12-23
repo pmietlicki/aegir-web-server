@@ -5,6 +5,6 @@ set -e
 rm -f /usr/local/apache2/logs/httpd.pid
 
 sudo /etc/init.d/ssh start
-sudo /etc/init.d/php7.3-fpm start
+/etc/init.d/php7.3-fpm start
 sudo /usr/sbin/apache2ctl start
 tail -f /var/log/apache2/*.log

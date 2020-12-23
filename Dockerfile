@@ -38,6 +38,8 @@ RUN apt-get update -qq && apt-get install -y -qq\
 
 ARG AEGIR_UID=1000
 ENV AEGIR_UID ${AEGIR_UID:-1000}
+ENV APACHE_PHP_RUN_USER aegir
+ENV APACHE_PHP_RUN_GROUP aegir
 
 RUN echo "Creating user aegir with UID $AEGIR_UID and GID $AEGIR_GID"
 
@@ -75,7 +77,7 @@ RUN bash standalone-install-fix-permissions-ownership.sh
 # Prepare Aegir Logs folder.
 RUN mkdir /var/log/aegir
 RUN chown aegir:aegir /var/log/aegir
-RUN chown -R aegir:aegir /var/log/
+RUN chown -R aegir:aegir /var/log/*
 RUN echo 'Hello, Aegir.' > /var/log/aegir/system.log
 
 ENV REGISTRY_REBUILD_VERSION 7.x-2.5
