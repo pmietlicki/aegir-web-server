@@ -84,16 +84,16 @@ RUN mkdir /var/aegir/config
 RUN chown aegir:aegir /var/aegir/config -R
 RUN mkdir /var/aegir/.drush
 
-# You may change this environment at run time. User UID 1 is created with this email address.
-ENV AEGIR_CLIENT_EMAIL aegir@aegir.local.computer
-ENV AEGIR_CLIENT_NAME admin
-ENV AEGIR_PROFILE hostmaster
-ENV AEGIR_VERSION 7.x-3.192
-ENV PROVISION_VERSION 7.x-3.x
-ENV AEGIR_WORKING_COPY 0
-ENV AEGIR_HTTP_SERVICE_TYPE apache
-ENV APACHE_PHP_RUN_USER aegir
-ENV APACHE_PHP_RUN_GROUP aegir
+#PREPARE SSH
+RUN mkdir /var/aegir/.ssh
+RUN chmod 700 /var/aegir/.ssh
+RUN touch /var/aegir/.ssh/authorized_keys
+RUN chmod 600 /var/aegir/.ssh/authorized_keys
+
+ENV ID_RSA_PUB ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDrQdWf01Rr6pP0DRtMa5QeZd2s6SK1fKSlZES9IaXN/w+uBhSCCMsElyPWDJ7rXbQVJavXE+yYiIBUpKcrex7u7b7+7V/PJOApfXZgijp3wZs6uSEdmpgq+ik50ah3Dg6RgrnFjS041rPzg/tnmkVbszCjAL6JRI55uEjnjnJXbLjGulndof8ZzCg0haCgeHuEgQDxQJ9b+Er3BX0zB2MNSyZnUEfQr4QxSQmOecD0rAYihAsp1TGHu2sAnxLE+m1L6pjOS/ZN0ca+0BH9hOQTNdAelhzVue7GYWdFm9Cqa5iq5xZx7dYPtkvuHyukKIYd31dyvN9JjBRbloZTpWKhuUWge7RvVLGGdJ8gWJB0T2QdsBuR+bpDyTse0h31F+5o5pXZ8OeHEOsMQBsl1Qy02RMk/yfgKMic11udUDB53bgj9joFQwbuFLzrirSsR6ErCg/qsO/D532UE3a5EV4gHqp8gmeAmlGmOVgmuI6iM880PM/iyW347i0SiY3OMOc= aegir@devaegirhostmaster
+
+RUN echo ${ID_RSA_PUB} >> /var/aegir/.ssh/authorized_keys
+
 COPY www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 # Must be fixed across versions so we can upgrade containers.
