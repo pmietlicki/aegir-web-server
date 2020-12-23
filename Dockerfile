@@ -36,7 +36,8 @@ RUN apt-get update -qq && apt-get install -y -qq\
   mysql-client \
   openssh-server
 
-ENV AEGIR_UID 1000
+ARG AEGIR_UID=1000
+ENV AEGIR_UID ${AEGIR_UID:-1000}
 
 RUN echo "Creating user aegir with UID $AEGIR_UID and GID $AEGIR_GID"
 
@@ -74,6 +75,8 @@ RUN bash standalone-install-fix-permissions-ownership.sh
 # Prepare Aegir Logs folder.
 RUN mkdir /var/log/aegir
 RUN chown aegir:aegir /var/log/aegir
+RUN chown -R aegir:aegir /var/log/
+RUN chown -R aegir:aegir /run/php/
 RUN echo 'Hello, Aegir.' > /var/log/aegir/system.log
 
 ENV REGISTRY_REBUILD_VERSION 7.x-2.5
