@@ -86,6 +86,7 @@ RUN chown aegir:aegir /var/aegir/config -R
 RUN mkdir /var/aegir/.drush
 
 #PREPARE SSH
+RUN /etc/init.d/ssh start
 RUN mkdir /var/aegir/.ssh
 RUN chmod 700 /var/aegir/.ssh
 RUN touch /var/aegir/.ssh/authorized_keys
