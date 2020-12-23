@@ -81,6 +81,7 @@ RUN drush dl --destination=/usr/share/drush/commands registry_rebuild-$REGISTRY_
 USER aegir
 
 RUN mkdir /var/aegir/config
+RUN chown aegir:aegir /var/aegir/config -R
 RUN mkdir /var/aegir/.drush
 
 # You may change this environment at run time. User UID 1 is created with this email address.
@@ -109,6 +110,7 @@ USER root
 
 # Expose Apache
 EXPOSE 80
- 
+COPY httpd-foreground /usr/local/bin/httpd-foreground
+RUN chmod +x /usr/local/bin/httpd-foreground
 # Launch Apache
-CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
+CMD ["httpd-foreground"]
