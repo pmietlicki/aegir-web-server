@@ -2,11 +2,12 @@ FROM ubuntu:20.04
 
 RUN apt-get update -qq\
  && apt-get install -y apt-transport-https ca-certificates \
- && apt-get install -y language-pack-fr-base software-properties-common apt-utils
+ && apt-get install -y locales locales-all software-properties-common apt-utils
 
-RUN locale-gen fr_FR.UTF-8
 ENV LANG fr_FR.UTF-8
 ENV LANGUAGE fr_FR:fr
+
+RUN locale-gen $LANG
 
 RUN apt-add-repository ppa:ondrej/php
 
