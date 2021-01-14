@@ -7,6 +7,8 @@ RUN apt-get update -qq\
 ENV LANG fr_FR.UTF-8
 ENV LANGUAGE fr_FR:fr
 
+ENV MYSQL_STATISTICS false
+
 RUN locale-gen $LANG
 
 RUN apt-add-repository ppa:ondrej/php

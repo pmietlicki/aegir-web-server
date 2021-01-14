@@ -1,4 +1,10 @@
 #!/bin/sh
+
+if [ "${MYSQL_STATISTICS}" = "false" ]
+then
+  sudo echo "column-statistics=0" >> /etc/mysql/conf.d/mysqldump.cnf
+fi
+
 set -e
 
 # Apache gets grumpy about PID files pre-existing
