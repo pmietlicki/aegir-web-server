@@ -42,6 +42,7 @@ This image is designed to create a new aegir web server to deploy aegir sites.
           - database
         environment:
           MYSQL_ROOT_PASSWORD: strongpassword
+          AEGIR_HOSTNAME: devaegir.local.computer
 
       webserver:
         image: pmietlicki/aegir-web-server
