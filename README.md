@@ -1,5 +1,4 @@
 **A docker image with apache / php mod fpm version 7.3 to host aegir sites.**
-
 *Designed to run easily under Rancher, see [rancher website](https://rancher.com/)*
 
 What is Aegir?
@@ -84,31 +83,6 @@ The install profile to run for the drupal front-end. Defaults to hostmaster.
 *Default: 1000*
 
 UID of the aegir user, you can put 0 if you have sudo or rights problems.
-
-## APACHE_PHP_RUN_USER
-*Default: aegir*
-
-username of the user that runs php mod fpm (for rights problems).
-
-## APACHE_PHP_RUN_GROUP
-*Default: aegir*
-
-username of the group that runs php mod fpm (for rights problems).
-
-## DRUSH_VERSION
-*Default: 8.3.0*
-
-The drush version to install inside the container.
-
-## REGISTRY_REBUILD_VERSION
-*Default: 7.x-2.5*
-
-The aegir registry version to install on top of drush.
-
-## ID_RSA_PUB
-*Default: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDrQdWf01Rr6pP0DRtMa5QeZd2s6SK1fKSlZES9IaXN/w+uBhSCCMsElyPWDJ7rXbQVJavXE+yYiIBUpKcrex7u7b7+7V/PJOApfXZgijp3wZs6uSEdmpgq+ik50ah3Dg6RgrnFjS041rPzg/tnmkVbszCjAL6JRI55uEjnjnJXbLjGulndof8ZzCg0haCgeHuEgQDxQJ9b+Er3BX0zB2MNSyZnUEfQr4QxSQmOecD0rAYihAsp1TGHu2sAnxLE+m1L6pjOS/ZN0ca+0BH9hOQTNdAelhzVue7GYWdFm9Cqa5iq5xZx7dYPtkvuHyukKIYd31dyvN9JjBRbloZTpWKhuUWge7RvVLGGdJ8gWJB0T2QdsBuR+bpDyTse0h31F+5o5pXZ8OeHEOsMQBsl1Qy02RMk/yfgKMic11utUDB53bgj9joFQwbuFLzrirSsR6ErCg/qsO/D532UE3a5EV4gHqp8gmeAmlGmOVgmuI6iM880PM/iyW347i0SiY3OMOc= aegir@devaegirhostmaster*
-
-The public SSH key of the hostmaster server, **very important if you want aegir to control your web server with ease !**
 
 # USAGE
 
