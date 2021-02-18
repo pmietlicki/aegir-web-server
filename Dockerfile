@@ -96,10 +96,10 @@ RUN drush dl --destination=/usr/share/drush/commands registry_rebuild-$REGISTRY_
 COPY php-fpm.conf /etc/apache2/conf-available/
 RUN a2enconf php-fpm
 
+USER aegir
+
 #Set SSH Password
 RUN echo "aegir:$AEGIR_SSH_PWD" | chpasswd
-
-USER aegir
 
 #PREPARE SSH
 RUN chmod 755 /var/aegir
