@@ -47,6 +47,8 @@ ENV APACHE_PHP_RUN_USER aegir
 ENV APACHE_PHP_RUN_GROUP aegir
 ENV APACHE_RUN_USER aegir
 ENV APACHE_RUN_GROUP aegir
+ENV AEGIR_SSH_PWD aegir
+
 
 RUN echo "Creating user aegir with UID $AEGIR_UID and GID $AEGIR_GID"
 
@@ -93,6 +95,9 @@ RUN drush dl --destination=/usr/share/drush/commands registry_rebuild-$REGISTRY_
 #Prepare PHP FPM config for apache
 COPY php-fpm.conf /etc/apache2/conf-available/
 RUN a2enconf php-fpm
+
+#Set SSH Password
+RUN echo "aegir:$AEGIR_SSH_PWD" | chpasswd
 
 USER aegir
 
