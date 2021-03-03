@@ -131,4 +131,4 @@ COPY httpd-foreground /usr/local/bin/httpd-foreground
 RUN sudo chmod +x /usr/local/bin/httpd-foreground
 # Launch Apache
 CMD ["httpd-foreground"]
-User root
+User aegir
