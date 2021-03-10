@@ -9,7 +9,7 @@ fi
 echo "    StrictHostKeyChecking no" | sudo tee -a /etc/ssh/ssh_config
 
 #Set SSH Password
-echo "aegir:${AEGIR_SSH_PWD}" | chpasswd
+echo "aegir:${AEGIR_SSH_PWD}" | sudo chpasswd
 
 #Change apache vars
 sudo sed -i "s/APACHE_RUN_USER=www-data/APACHE_RUN_USER=$APACHE_RUN_USER/g" /etc/apache2/envvars
