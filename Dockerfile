@@ -75,7 +75,7 @@ RUN curl -sS https://getcomposer.org/installer | php && \
 # Et on fini par l'install de VIM car on en aura forcement besoin 
 RUN apt-get install -y vim 
 
-ENV DRUSH_VERSION=8.3.0
+ENV DRUSH_VERSION=8.4.6
 RUN wget https://github.com/drush-ops/drush/releases/download/$DRUSH_VERSION/drush.phar -O - -q > /usr/local/bin/drush
 RUN chmod +x /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/drush
